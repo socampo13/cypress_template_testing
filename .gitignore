@@ -1,0 +1,7 @@
+/node_modules
+/cypress.json
+/cypress/assets/Workflows Inventory.xlsx
+.env
+/cypress.env.json
+/javascript-code/practice-5.js
+/cypress/screenshots

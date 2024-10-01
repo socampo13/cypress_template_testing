@@ -4,6 +4,21 @@ describe("Check random data from Companies in an Excel", () => {
     const shuffled = array.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
   };
+  const filePath = 'cypress/assets/companies.xlsx';
+
+  cy.readExcelFile(filePath).then((data) => {
+    cy.log(JSON.stringify(data));
+
+    expect (data.length).to.be.greaterThan(0);
+
+    data.forEach((row) => {
+      expect(row).to.have.property('Name');
+      expect(row).to.have.property('Address');
+      expect(row).to.have.property('Phone');
+      expect(row).to.have.property('Email');
+      expect(row).to.have.property('Associations');
+    });
+  });
 
   it("Checks that the company properties randomly selected are correct", () => {
     // Loads data from the JSON file
